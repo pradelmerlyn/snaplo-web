@@ -8,6 +8,7 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import LoanSummary from "./tabs/loan-summary/LoanSummary";
 import LeadSummary from "./tabs/lead-summary/LeadSummary";
+import PricingSummary from "./tabs/pricing/PricingSummary";
 
 export default function MainContent() {
   const [value, setValue] = React.useState("4"); // default selected is Pricing
@@ -64,7 +65,7 @@ export default function MainContent() {
           Borrower Summary
         </TabPanel>
         <TabPanel value="4" sx={{ backgroundColor: "#ffffff", p: 0 }}>
-          Pricing
+          <PricingSummary />
         </TabPanel>
         <TabPanel value="5" sx={{ backgroundColor: "#ffffff", p: 0 }}>
           <LoanSummary />
