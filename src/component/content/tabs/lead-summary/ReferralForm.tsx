@@ -13,7 +13,7 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/Save";
 import CancelIcon from "@mui/icons-material/Cancel";
-import { InfoLabel, InfoValue } from "../../../AppTheme";
+import { InfoLabel, InfoValue } from "../../../../theme/AppTheme";
 
 export default function ReferralForm({
   globalEditMode = false,

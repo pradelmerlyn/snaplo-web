@@ -6,12 +6,15 @@ import {
   Stack,
   Button,
   Divider,
+  useTheme,
 } from "@mui/material";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import AssignedContacts from "./AssignedContacts";
 import ActionButtons from "./ActionButtons";
 
 export default function TopHeader() {
+  const theme = useTheme();
+
   return (
     <Stack
       direction="row"
@@ -34,9 +37,9 @@ export default function TopHeader() {
         {/* Loan Number */}
         <Typography
           color="primary"
+          variant="caption"
           sx={{
             fontWeight: 600,
-            fontSize: "0.7rem",
             px: 0.125,
             lineHeight: 1.1,
           }}
@@ -51,17 +54,19 @@ export default function TopHeader() {
             alignItems: "center",
             px: 0.5,
             py: 0.125,
-            bgcolor: "#e0e0e0",
+            bgcolor: theme.palette.grey[100],
             borderRadius: "4px",
             height: 20,
           }}
         >
-          <LockOpenIcon sx={{ fontSize: "0.7rem", mr: 0.375 }} />
+          <LockOpenIcon
+            sx={{ fontSize: theme.typography.caption.fontSize, mr: 0.375 }}
+          />
           <Typography
+            variant="caption"
             sx={{
-              fontSize: "0.7rem",
               fontWeight: 600,
-              color: "#424242",
+              color: theme.palette.text.secondary,
               lineHeight: 1,
             }}
           >
@@ -71,8 +76,8 @@ export default function TopHeader() {
 
         {/* Name and Role */}
         <Typography
+          variant="caption"
           sx={{
-            fontSize: "0.7rem",
             fontWeight: 600,
             lineHeight: 1,
             px: 0.125,
@@ -83,7 +88,7 @@ export default function TopHeader() {
             component="span"
             sx={{
               fontWeight: 400,
-              color: "text.secondary",
+              color: theme.palette.text.secondary,
               ml: 0.125,
             }}
           >

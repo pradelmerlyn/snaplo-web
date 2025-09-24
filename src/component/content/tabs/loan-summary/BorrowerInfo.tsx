@@ -1,7 +1,12 @@
 "use client";
 
-import { Box, Typography, Paper, Button, Divider, Grid } from "@mui/material";
-import { InfoLabel, InfoValue } from "../../../AppTheme";
+import { Box, Typography, Button, Divider, Grid } from "@mui/material";
+import {
+  CardHeaderTitle,
+  InfoLabel,
+  InfoValue,
+  StyledPaper,
+} from "../../../../theme/AppTheme";
 import CreditScoreIcon from "@mui/icons-material/CreditScore";
 import PhoneIcon from "@mui/icons-material/Phone";
 import PaidIcon from "@mui/icons-material/Paid";
@@ -12,18 +17,9 @@ import EmailIcon from "@mui/icons-material/Email";
 export default function BorrowerInfoCard() {
   return (
     <Box>
-      <Typography
-        variant="h6"
-        fontWeight={700}
-        sx={{ color: "#1a237e", mb: 2, fontSize: "18px" }}
-      >
-        Borrower
-      </Typography>
+      <CardHeaderTitle>Borrower</CardHeaderTitle>
 
-      <Paper
-        elevation={1}
-        sx={{ borderRadius: 3, border: "1px solid #e0e0e0", p: 3 }}
-      >
+      <StyledPaper>
         {/* Header Row */}
         <Grid
           container
@@ -140,7 +136,7 @@ export default function BorrowerInfoCard() {
             </Button>
           </Grid>
         </Grid>
-      </Paper>
+      </StyledPaper>
     </Box>
   );
 }

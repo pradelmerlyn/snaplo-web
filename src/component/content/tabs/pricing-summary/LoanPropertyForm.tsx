@@ -9,72 +9,20 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
-  Button,
-  Paper,
   Grid,
   InputAdornment,
   Alert,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
-
-const StyledPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(2),
-  borderRadius: 12,
-  backgroundColor: "#fff",
-  border: "1px solid #e0e0e0",
-  marginBottom: theme.spacing(3),
-  elevation: 1,
-}));
-
-const SectionTitle = styled(Typography)(({ theme }) => ({
-  fontSize: "14px",
-  fontWeight: 700,
-  color: "#1a237e",
-  marginBottom: theme.spacing(1.5),
-  textTransform: "uppercase",
-}));
-
-const InfoSection = styled(Box)(({ theme }) => ({
-  marginBottom: theme.spacing(3),
-}));
-
-const InfoRow = styled(Box)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  marginBottom: theme.spacing(1),
-}));
-
-const InfoLabel = styled(Typography)(({ theme }) => ({
-  fontSize: "11px",
-  color: "#666666",
-  fontWeight: 400,
-  marginBottom: 2,
-}));
-
-const InfoValue = styled(Typography)(({ theme }) => ({
-  fontSize: "11px",
-  color: "#333333",
-  fontWeight: 600,
-  lineHeight: 1.3,
-}));
-
-const EditButton = styled(Button)(({ theme }) => ({
-  borderRadius: 6,
-  textTransform: "none",
-  fontWeight: 500,
-  padding: theme.spacing(0.5, 1),
-  fontSize: "11px",
-  minWidth: "auto",
-}));
-
-const ActionButton = styled(Button)(({ theme }) => ({
-  borderRadius: 6,
-  textTransform: "none",
-  fontWeight: 500,
-  padding: theme.spacing(0.75, 1.5),
-  fontSize: "11px",
-}));
+import {
+  InfoLabel,
+  InfoValue,
+  StyledPaper,
+  SectionTitle,
+  EditButton,
+  ActionButton,
+  InfoSection,
+  InfoRow,
+} from "@/theme/AppTheme";
 
 interface LoanPropertyFormProps {}
 

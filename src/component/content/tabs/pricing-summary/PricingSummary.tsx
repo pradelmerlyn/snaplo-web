@@ -4,6 +4,7 @@ import React from "react";
 import { Box, Divider } from "@mui/material";
 import PricingBuilder from "./PricingBuilder";
 import LoanPropertyForm from "./LoanPropertyForm";
+import { VerticalDivider } from "@/theme/AppTheme";
 
 export default function PricingSummary() {
   return (
@@ -49,14 +50,7 @@ export default function PricingSummary() {
               minHeight: 600,
             }}
           >
-            <Divider
-              orientation="vertical"
-              sx={{
-                borderColor: "#E2E8F0",
-                borderWidth: 1,
-                height: "100%",
-              }}
-            />
+            <VerticalDivider orientation="vertical" />
           </Box>
 
           {/* Right Side - Loan & Property Form */}

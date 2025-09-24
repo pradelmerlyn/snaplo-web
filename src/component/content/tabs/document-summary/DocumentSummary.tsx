@@ -182,7 +182,6 @@ export default function DocumentSummary() {
     const files = event.target.files;
     if (files) {
       console.log("Selected files:", Array.from(files));
-      // Handle file upload logic here
     }
   };
 

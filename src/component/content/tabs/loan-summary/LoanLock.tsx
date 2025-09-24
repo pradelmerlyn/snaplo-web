@@ -2,32 +2,17 @@
 
 import { Box, Typography, Paper, Chip } from "@mui/material";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
+import { CardHeaderTitle, StyledPaper } from "@/theme/AppTheme";
 
 export default function LoanLock() {
   return (
     <Box>
-      {/* Section Title */}
-      <Typography
-        variant="h6"
-        fontWeight={600}
-        sx={{
-          color: "#1a237e",
-          mb: 1.5,
-          fontSize: "18px",
-        }}
-      >
-        Loan Lock
-      </Typography>
+      <CardHeaderTitle>Loan Lock</CardHeaderTitle>
 
       {/* Card */}
-      <Paper
+      <StyledPaper
         elevation={1}
         sx={{
-          px: 2,
-          py: 2,
-          borderRadius: 2,
-          backgroundColor: "#fff",
-          border: "1px solid #e0e0e0",
           height: 380,
         }}
       >
@@ -90,7 +75,7 @@ export default function LoanLock() {
           <LabelValue label="Base Price" value="N/A" />
           <LabelValue label="Borrower Price" value="N/A" />
         </Box>
-      </Paper>
+      </StyledPaper>
     </Box>
   );
 }
