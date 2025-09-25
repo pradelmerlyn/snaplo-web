@@ -6,12 +6,16 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import { useTheme } from "@mui/material";
 import LoanSummary from "./tabs/loan-summary/LoanSummary";
 import LeadSummary from "./tabs/lead-summary/LeadSummary";
-import PricingSummary from "./tabs/pricing/PricingSummary";
+import PricingSummary from "./tabs/pricing-summary/PricingSummary";
 import DocumentSummary from "./tabs/document-summary/DocumentSummary";
+import type { TabPanelProps } from "@mui/lab/TabPanel";
+import ServicesSummary from "./tabs/service-summary/ServiceSummary";
 
 export default function MainContent() {
+  const theme = useTheme();
   const [value, setValue] = React.useState("4"); // default selected is Pricing
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -19,9 +23,11 @@ export default function MainContent() {
   };
 
   return (
-    <Box sx={{ width: "100%", backgroundColor: "#ffffff" }}>
+    <Box
+      sx={{ width: "100%", backgroundColor: theme.palette.background.paper }}
+    >
       <TabContext value={value}>
-        <Box sx={{ borderBottom: "1px solid #e0e0e0" }}>
+        <Box sx={{ borderBottom: `1px solid ${theme.palette.grey[100]}` }}>
           <TabList
             onChange={handleChange}
             aria-label="loan process tabs"
@@ -30,21 +36,21 @@ export default function MainContent() {
             sx={{
               minHeight: 36,
               ".MuiTab-root": {
+                ...theme.typography.body2,
                 textTransform: "none",
                 fontWeight: 600,
-                fontSize: "0.625rem",
                 minHeight: 36,
                 minWidth: 120,
                 px: 2,
                 py: 1,
-                color: "#212121",
+                color: theme.palette.text.primary,
               },
               ".Mui-selected": {
-                color: "#1976d2",
+                color: theme.palette.primary.main,
               },
               ".MuiTabs-indicator": {
                 height: 2,
-                backgroundColor: "#1976d2",
+                backgroundColor: theme.palette.primary.main,
               },
             }}
           >
@@ -56,25 +62,39 @@ export default function MainContent() {
             <Tab label="Documents" value="6" />
           </TabList>
         </Box>
-        <TabPanel value="1" sx={{ backgroundColor: "#ffffff", p: 0 }}>
+        <StyledTabPanel value="1">
           <LeadSummary />
-        </TabPanel>
-        <TabPanel value="2" sx={{ backgroundColor: "#ffffff", p: 0 }}>
-          Services
-        </TabPanel>
-        <TabPanel value="3" sx={{ backgroundColor: "#ffffff", p: 0 }}>
-          Borrower Summary
-        </TabPanel>
-        <TabPanel value="4" sx={{ backgroundColor: "#ffffff", p: 0 }}>
+        </StyledTabPanel>
+        <StyledTabPanel value="2">
+          <ServicesSummary />
+        </StyledTabPanel>
+        <StyledTabPanel value="3">Borrower Summary</StyledTabPanel>
+        <StyledTabPanel value="4">
           <PricingSummary />
-        </TabPanel>
-        <TabPanel value="5" sx={{ backgroundColor: "#ffffff", p: 0 }}>
+        </StyledTabPanel>
+        <StyledTabPanel value="5">
           <LoanSummary />
-        </TabPanel>
-        <TabPanel value="6" sx={{ backgroundColor: "#ffffff", p: 0 }}>
+        </StyledTabPanel>
+        <StyledTabPanel value="6">
           <DocumentSummary />
-        </TabPanel>
+        </StyledTabPanel>
       </TabContext>
     </Box>
+  );
+}
+
+function StyledTabPanel({ children, sx, ...props }: TabPanelProps) {
+  const theme = useTheme();
+  return (
+    <TabPanel
+      {...props}
+      sx={{
+        backgroundColor: theme.palette.background.paper,
+        p: 0,
+        ...sx,
+      }}
+    >
+      {children}
+    </TabPanel>
   );
 }

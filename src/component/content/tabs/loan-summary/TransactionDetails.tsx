@@ -1,41 +1,31 @@
 "use client";
 
+import { CardHeaderTitle, StyledPaper } from "@/theme/AppTheme";
 import { Box, Typography, Paper } from "@mui/material";
 
 export default function TransactionDetails() {
   return (
     <Box>
-      {/* Section Title */}
-      <Typography
-        variant="h6"
-        fontWeight={600}
-        sx={{
-          color: "#1a237e",
-          mb: 1.5,
-          fontSize: "18px",
-        }}
-      >
-        Details of Transaction
-      </Typography>
+      <CardHeaderTitle>Details of Transaction</CardHeaderTitle>
 
       {/* Card */}
-      <Paper
-        elevation={1}
-        sx={{
-          px: 2,
-          py: 2,
-          borderRadius: 2,
-          backgroundColor: "#fff",
-          border: "1px solid #e0e0e0",
-          height: 380,
-        }}
+      <StyledPaper
+      // elevation={1}
+      // sx={{
+      //   px: 2,
+      //   py: 2,
+      //   borderRadius: 2,
+      //   backgroundColor: "#fff",
+      //   border: "1px solid #e0e0e0",
+      //   height: 380,
+      // }}
       >
         {/* Main Content Container */}
         <Box
           sx={{
             display: "flex",
             gap: 4,
-            mb: 3,
+            mb: 2,
           }}
         >
           {/* Left Column - COSTS */}
@@ -146,7 +136,7 @@ export default function TransactionDetails() {
             $100,000
           </Typography>
         </Box>
-      </Paper>
+      </StyledPaper>
     </Box>
   );
 }

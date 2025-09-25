@@ -1,5 +1,6 @@
 "use client";
 
+import { CardHeaderTitle, StyledPaper } from "@/theme/AppTheme";
 import { Box, Typography, Paper } from "@mui/material";
 import dynamic from "next/dynamic";
 
@@ -176,27 +177,11 @@ const DynamicCalendar = dynamic(
 export default function CalendarCard() {
   return (
     <Box>
-      <Typography
-        variant="h6"
-        fontWeight={700}
-        sx={{ color: "#1a237e", mb: 2, fontSize: "18px" }}
-      >
-        Calendar
-      </Typography>
+      <CardHeaderTitle>Calendar</CardHeaderTitle>
 
-      <Paper
-        elevation={1}
-        sx={{
-          px: 2,
-          py: 2,
-          borderRadius: 3,
-          backgroundColor: "#fff",
-          width: "100%",
-          border: "1px solid #e0e0e0",
-        }}
-      >
+      <StyledPaper>
         <DynamicCalendar />
-      </Paper>
+      </StyledPaper>
     </Box>
   );
 }

@@ -1,22 +1,14 @@
 "use client";
 
+import { CardHeaderTitle, StyledPaper } from "@/theme/AppTheme";
 import { Box, Typography, Paper, Divider } from "@mui/material";
 
 export default function PropertyInfo() {
   return (
     <Box>
-      <Typography
-        variant="h6"
-        fontWeight={700}
-        sx={{ color: "#1a237e", mb: 2, fontSize: "18px" }}
-      >
-        Property
-      </Typography>
+      <CardHeaderTitle>Property</CardHeaderTitle>
 
-      <Paper
-        elevation={1}
-        sx={{ borderRadius: 3, border: "1px solid #e0e0e0", p: 3, height: 380 }}
-      >
+      <StyledPaper elevation={1} sx={{ height: 380 }}>
         {/* Centered Container for all content */}
         <Box
           sx={{
@@ -90,7 +82,7 @@ export default function PropertyInfo() {
             />
           </Box>
         </Box>
-      </Paper>
+      </StyledPaper>
     </Box>
   );
 }
