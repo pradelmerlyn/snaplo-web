@@ -13,6 +13,7 @@ import PricingSummary from "./tabs/pricing-summary/PricingSummary";
 import DocumentSummary from "./tabs/document-summary/DocumentSummary";
 import type { TabPanelProps } from "@mui/lab/TabPanel";
 import ServicesSummary from "./tabs/service-summary/ServiceSummary";
+import BorrowerSummary from "./tabs/borrower-summary/BorrowerSummary";
 
 export default function MainContent() {
   const theme = useTheme();
@@ -68,7 +69,9 @@ export default function MainContent() {
         <StyledTabPanel value="2">
           <ServicesSummary />
         </StyledTabPanel>
-        <StyledTabPanel value="3">Borrower Summary</StyledTabPanel>
+        <StyledTabPanel value="3">
+          <BorrowerSummary />
+        </StyledTabPanel>
         <StyledTabPanel value="4">
           <PricingSummary />
         </StyledTabPanel>

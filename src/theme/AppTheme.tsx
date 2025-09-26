@@ -15,6 +15,8 @@ import {
   Grid,
 } from "@mui/material";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 // Define consistent font sizes and weights
 const typography = {
@@ -86,7 +88,7 @@ const theme = createTheme({
       fontWeight: fontWeights.regular,
       lineHeight: 1.4,
     },
-    
+
     button: {
       fontSize: typography.body2,
       fontWeight: fontWeights.medium,
@@ -117,6 +119,90 @@ const theme = createTheme({
           },
         },
       ],
+    },
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          padding: 4,
+          "& .MuiSvgIcon-root": {
+            fontSize: "18px", // shrink checkbox icon size
+          },
+        },
+      },
+    },
+    MuiRadio: {
+      styleOverrides: {
+        root: {
+          padding: 4,
+          "& .MuiSvgIcon-root": {
+            fontSize: "18px", // shrink radio icon size
+          },
+        },
+      },
+    },
+    MuiFormControlLabel: {
+      styleOverrides: {
+        label: {
+          fontSize: "12px",
+        },
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        size: "small",
+      },
+      styleOverrides: {
+        root: {
+          "& .MuiInputBase-input": {
+            fontSize: "13px",
+          },
+          "& .MuiInputLabel-root": {
+            fontSize: "12px",
+          },
+        },
+      },
+    },
+    MuiSelect: {
+      defaultProps: {
+        size: "small",
+        variant: "outlined",
+      },
+      styleOverrides: {
+        root: {
+          fontSize: "12px",
+        },
+        select: {
+          paddingTop: "10px",
+          paddingBottom: "10px",
+          display: "flex",
+          alignItems: "center", // Ensure vertical centering
+        },
+        icon: {
+          top: "calc(50% - 12px)", // Center the dropdown arrow
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          // Align label baseline with TextField and Select consistently
+          top: "-6px", // Adjust this based on your font size and padding
+          fontSize: "12px",
+          transform: "translate(14px, 12px) scale(1)",
+        },
+        shrink: {
+          // When label floats up
+          transform: "translate(14px, -9px) scale(0.75)",
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          fontSize: "12px",
+          textTransform: "none",
+        },
+      },
     },
   },
   // Add breakpoints to ensure consistent rendering
@@ -242,10 +328,12 @@ export const ActionButton = styled(Button)(({ theme }) => ({
 export default function AppTheme({ children }: { children: React.ReactNode }) {
   return (
     <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline enableColorScheme />
-        {children}
-      </ThemeProvider>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline enableColorScheme />
+          {children}
+        </ThemeProvider>
+      </LocalizationProvider>
     </AppRouterCacheProvider>
   );
 }
