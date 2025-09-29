@@ -144,7 +144,7 @@ export default function TransactionDetailsForm() {
 
         <Grid size={{ xs: 12, md: 6 }}>
           <Box px={1}>
-            <InfoLabel >Loan Information</InfoLabel>
+            <InfoLabel sx={{ mt: 1 }}>Loan Information</InfoLabel>
 
             <TextField
               label="Loan Type"

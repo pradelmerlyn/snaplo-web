@@ -10,11 +10,12 @@ export default function TransactionDetailsFormContent() {
     <CollapsibleSection title="Transaction Information">
       <Grid container spacing={3} mt={1}>
         {/* <Grid size={{ xs: 12, md: 6 }}> */}
-          <Box px={1}>
-            <TransactionDetailsForm />
-            <MortgageLoanForm />
-          </Box>
-        </Grid>
+        <Box px={1}>
+          <TransactionDetailsForm />
+          <MortgageLoanForm />
+          
+        </Box>
+      </Grid>
       {/* </Grid> */}
     </CollapsibleSection>
   );
