@@ -150,16 +150,19 @@ const theme = createTheme({
     MuiTextField: {
       defaultProps: {
         size: "small",
+        fullWidth: true,
       },
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
+          marginBottom: theme.spacing(2),
+          // Apply global sx={{ my: 2.5
           "& .MuiInputBase-input": {
             fontSize: "13px",
           },
           "& .MuiInputLabel-root": {
             fontSize: "12px",
           },
-        },
+        }),
       },
     },
     MuiSelect: {
