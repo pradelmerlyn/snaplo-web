@@ -13,10 +13,13 @@ import {
   Tab,
   Divider,
   Grid,
+  ToggleButton,
+  TextField,
 } from "@mui/material";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { alpha } from "@mui/material/styles";
 
 // Define consistent font sizes and weights
 const typography = {
@@ -95,116 +98,189 @@ const theme = createTheme({
       textTransform: "none",
     },
   },
-  components: {
-    // Fix hydration issues
-    MuiCssBaseline: {
-      styleOverrides: {
-        body: {
-          margin: 0,
-          padding: 0,
-        },
+components: {
+  // Fix hydration issues
+  MuiCssBaseline: {
+    styleOverrides: {
+      body: {
+        margin: 0,
+        padding: 0,
       },
     },
-    // Ensure Grid works properly with SSR
-    MuiGrid: {
-      defaultProps: {
-        // Prevent hydration mismatches
-        suppressHydrationWarning: true,
-      },
-      variants: [
-        {
-          props: { className: "centered-grid" },
-          style: {
-            textAlign: "center",
-          },
-        },
-      ],
+  },
+  // Ensure Grid works properly with SSR
+  MuiGrid: {
+    defaultProps: {
+      // Prevent hydration mismatches
+      suppressHydrationWarning: true,
     },
-    MuiCheckbox: {
-      styleOverrides: {
-        root: {
-          padding: 4,
-          "& .MuiSvgIcon-root": {
-            fontSize: "18px", // shrink checkbox icon size
-          },
+    variants: [
+      {
+        props: { className: "centered-grid" },
+        style: {
+          textAlign: "center",
         },
       },
-    },
-    MuiRadio: {
-      styleOverrides: {
-        root: {
-          padding: 4,
-          "& .MuiSvgIcon-root": {
-            fontSize: "18px", // shrink radio icon size
-          },
-        },
-      },
-    },
-    MuiFormControlLabel: {
-      styleOverrides: {
-        label: {
-          fontSize: "12px",
-        },
-      },
-    },
-    MuiTextField: {
-      defaultProps: {
-        size: "small",
-      },
-      styleOverrides: {
-        root: {
-          "& .MuiInputBase-input": {
-            fontSize: "13px",
-          },
-          "& .MuiInputLabel-root": {
-            fontSize: "12px",
-          },
-        },
-      },
-    },
-    MuiSelect: {
-      defaultProps: {
-        size: "small",
-        variant: "outlined",
-      },
-      styleOverrides: {
-        root: {
-          fontSize: "12px",
-        },
-        select: {
-          paddingTop: "10px",
-          paddingBottom: "10px",
-          display: "flex",
-          alignItems: "center", // Ensure vertical centering
-        },
-        icon: {
-          top: "calc(50% - 12px)", // Center the dropdown arrow
-        },
-      },
-    },
-    MuiInputLabel: {
-      styleOverrides: {
-        root: {
-          // Align label baseline with TextField and Select consistently
-          top: "-6px", // Adjust this based on your font size and padding
-          fontSize: "12px",
-          transform: "translate(14px, 12px) scale(1)",
-        },
-        shrink: {
-          // When label floats up
-          transform: "translate(14px, -9px) scale(0.75)",
-        },
-      },
-    },
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          fontSize: "12px",
-          textTransform: "none",
+    ],
+  },
+  MuiCheckbox: {
+    styleOverrides: {
+      root: {
+        padding: 4,
+        "& .MuiSvgIcon-root": {
+          fontSize: "18px", // shrink checkbox icon size
         },
       },
     },
   },
+  MuiRadio: {
+    styleOverrides: {
+      root: {
+        padding: 4,
+        "& .MuiSvgIcon-root": {
+          fontSize: "18px", // shrink radio icon size
+        },
+      },
+    },
+  },
+  MuiFormControlLabel: {
+    styleOverrides: {
+      label: {
+        fontSize: "12px",
+      },
+    },
+  },
+  MuiTextField: {
+    defaultProps: {
+      size: "small",
+    },
+    styleOverrides: {
+      root: {
+        "& .MuiInputBase-input": {
+          fontSize: "13px"
+        },
+        "& .MuiInputLabel-root": {
+          fontSize: "12px",
+        },
+      },
+    },
+  },
+  MuiSelect: {
+    defaultProps: {
+      size: "small",
+      variant: "outlined",
+    },
+    styleOverrides: {
+      root: {
+        fontSize: "12px",
+      },
+      select: {
+        paddingTop: "10px",
+        paddingBottom: "10px",
+        display: "flex",
+        alignItems: "center", // Ensure vertical centering
+      },
+      icon: {
+        top: "calc(50% - 12px)", // Center the dropdown arrow
+      },
+    },
+  },
+  MuiInputLabel: {
+    styleOverrides: {
+      root: {
+        // Align label baseline with TextField and Select consistently
+        top: "-6px", // Adjust this based on your font size and padding
+        fontSize: "12px",
+        transform: "translate(14px, 12px) scale(1)",
+      },
+      shrink: {
+        // When label floats up
+        transform: "translate(14px, -9px) scale(0.75)",
+      },
+    },
+  },
+  MuiButton: {
+    styleOverrides: {
+      root: {
+        fontSize: "12px",
+        textTransform: "none",
+      },
+    },
+  },
+  MuiTableContainer: {
+    styleOverrides: {
+      root: {
+        border: "1px solid #E2E8F0",
+        borderRadius: 8,
+      },
+    },
+  },
+  MuiTableHead: {
+    styleOverrides: {
+      root: ({ theme }: any) => ({
+        backgroundColor: "#F8FAFC",
+        "& .MuiTableCell-root": {
+          fontWeight: 600,
+          color: theme.palette.text.secondary,
+          borderBottom: "1px solid #E2E8F0",
+          fontSize: 13,
+        },
+      }),
+    },
+  },
+  MuiTableCell: {
+    styleOverrides: {
+      root: {
+        borderBottom: "1px solid #F1F5F9",
+        paddingTop: 12,
+        paddingBottom: 12,
+        fontSize: 13,
+      },
+    },
+  },
+  MuiTableRow: {
+    styleOverrides: {
+      root: {
+        "&:hover": {
+          backgroundColor: "#F8FAFC",
+        },
+      },
+    },
+  },
+  MuiTablePagination: {
+    styleOverrides: {
+      toolbar: {
+        paddingLeft: 8,
+        paddingRight: 8,
+      },
+      displayedRows: { fontSize: 12 },
+      selectLabel: { fontSize: 12 },
+      select: { fontSize: 12 },
+    },
+  },
+   MuiToggleButton: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          borderRadius: 10,
+          ...theme.typography.button,
+          padding: theme.spacing(0.75, 1.5),
+          textTransform: "none",
+          border: `1px solid ${theme.palette.divider}`,
+          "&.Mui-selected": {
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.common.white,
+            "&:hover": {
+              backgroundColor: theme.palette.primary.dark,
+            },
+          },
+        }),
+      },
+    },
+    
+},
+
+   
+
   // Add breakpoints to ensure consistent rendering
   breakpoints: {
     values: {
@@ -337,3 +413,84 @@ export default function AppTheme({ children }: { children: React.ReactNode }) {
     </AppRouterCacheProvider>
   );
 }
+
+export const Pill = styled("span")<
+  { tone?: "default" | "info" | "warning" | "error" }
+>(({ theme, tone = "default" }) => {
+  const map = {
+    default: {
+      bg: alpha(theme.palette.primary.main, 0.08),
+      fg: theme.palette.primary.main,
+    },
+    info: {
+      bg: alpha(theme.palette.primary.main, 0.08),
+      fg: theme.palette.primary.main,
+    },
+    warning: {
+      bg: alpha("#F59E0B", 0.15), // amber
+      fg: "#92400E",
+    },
+    error: {
+      bg: alpha(theme.palette.error.main, 0.15),
+      fg: theme.palette.error.dark,
+    },
+  } as const;
+
+  const { bg, fg } = map[tone];
+
+  return {
+    display: "inline-flex",
+    alignItems: "center",
+    padding: "4px 10px",
+    borderRadius: 999,
+    fontSize: 12,
+    fontWeight: 600,
+    lineHeight: 1,
+    backgroundColor: bg,
+    color: fg,
+  };
+});
+
+export const ActionToggleButton = styled(ToggleButton)(({ theme }) => ({
+  borderRadius: 6,
+  ...theme.typography.button,          
+  padding: theme.spacing(0.75, 1.5),
+  textTransform: "none",
+  border: `1px solid ${theme.palette.divider}`,
+
+  "&&": {
+    fontSize: theme.typography.h2.fontSize,
+  },
+
+  "&.Mui-selected": {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.common.white,
+    "&:hover": {
+      backgroundColor: theme.palette.primary.dark,
+    },
+  },
+}));
+
+export const SearchBox = styled(TextField)(({ theme }) => ({
+  minWidth: 280,
+  borderRadius: 10,
+  "& .MuiOutlinedInput-root": {
+    borderRadius: 6,
+    backgroundColor: theme.palette.grey[100],
+    "& fieldset": {
+      borderColor: theme.palette.divider,
+    },
+    "&:hover fieldset": {
+      borderColor: theme.palette.text.primary,
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: theme.palette.primary.main,
+      boxShadow: `0 0 0 3px ${theme.palette.primary.main}33`, // 20% alpha
+    },
+  },
+  "& .MuiInputAdornment-root": {
+    color: theme.palette.text.secondary,
+  },
+}));
+
+

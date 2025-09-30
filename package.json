@@ -20,6 +20,7 @@
     "@mui/x-data-grid": "^8.11.3",
     "@mui/x-date-pickers": "^8.11.3",
     "@mui/x-date-pickers-pro": "^8.11.3",
+    "axios": "^1.12.2",
     "dayjs": "^1.11.18",
     "next": "15.5.3",
     "react": "19.1.0",
